@@ -1,11 +1,11 @@
 CREATE TABLE Movie (
-    id TEXT NOT NULL,
+    id TEXT PRIMARY KEY,
     title TEXT NOT NULL,
     image TEXT NOT NULL
 );
 
 insert {
-    INSERT INTO Movie(id, title, image)
+    INSERT OR REPLACE INTO Movie(id, title, image)
     SELECT
         CAST(json_extract(value, '$.id') AS TEXT) id,
         CAST(json_extract(value, '$.title') AS TEXT) title,
@@ -17,3 +17,6 @@ insert {
 
 getAll:
 SELECT * FROM Movie;
+
+deleteAll:
+DELETE FROM Movie;

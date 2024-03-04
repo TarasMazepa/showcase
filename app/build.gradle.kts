@@ -59,6 +59,9 @@ sqldelight {
 }
 
 dependencies {
+    implementation(libs.picasso)
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.paging3.extensions)
     implementation(libs.coroutines.extensions)
     implementation(libs.android.driver)
