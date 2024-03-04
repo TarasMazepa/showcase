@@ -1,0 +1,19 @@
+CREATE TABLE Movie (
+    id TEXT NOT NULL,
+    title TEXT NOT NULL,
+    image TEXT NOT NULL
+);
+
+insert {
+    INSERT INTO Movie(id, title, image)
+    SELECT
+        CAST(json_extract(value, '$.id') AS TEXT) id,
+        CAST(json_extract(value, '$.title') AS TEXT) title,
+        CAST(json_extract(value, '$.image') AS TEXT) image
+    FROM json_each(json_extract(:json, '$'))
+    WHERE id NOT NULL AND title NOT NULL AND image NOT NULL
+    ;
+}
+
+getAll:
+SELECT * FROM Movie;

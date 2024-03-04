@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Showcase</string>
+    <string name="fibonacci">Fibonacci</string>
+    <string name="movies">Movies</string>
+    <string name="reset">Reset</string>
+    <string name="next">Next</string>
+</resources>
