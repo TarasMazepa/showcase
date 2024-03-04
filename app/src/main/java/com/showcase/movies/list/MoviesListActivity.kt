@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.showcase.App
 import com.showcase.R
+import com.showcase.movies.details.MovieActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MoviesListActivity : AppCompatActivity() {
     private val viewModel: MoviesListActivityViewModel by viewModels()
     private val moviesAdapter by lazy {
-        MoviesAdapter()
+        MoviesAdapter {
+            MovieActivity.start(this, it)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

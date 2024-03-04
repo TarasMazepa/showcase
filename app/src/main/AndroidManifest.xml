@@ -32,6 +32,9 @@
         <activity
             android:name=".movies.list.MoviesListActivity"
             android:theme="@style/Theme.Showcase" />
+        <activity
+            android:name=".movies.details.MovieActivity"
+            android:theme="@style/Theme.Showcase" />
     </application>
 
 </manifest>

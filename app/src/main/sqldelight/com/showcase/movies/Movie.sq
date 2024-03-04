@@ -16,7 +16,20 @@ insert {
 }
 
 getAll:
-SELECT * FROM Movie;
+SELECT * FROM Movie ORDER BY title ASC;
 
 deleteAll:
 DELETE FROM Movie;
+
+get:
+SELECT * FROM Movie
+WHERE :id = id;
+
+delete:
+DELETE FROM Movie
+WHERE :id = id;
+
+insertSingle:
+INSERT OR REPLACE INTO Movie(id, title, image)
+VALUES (:id, :title, :image);
+

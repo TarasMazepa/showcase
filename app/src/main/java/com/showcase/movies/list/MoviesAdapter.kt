@@ -11,7 +11,7 @@ import com.showcase.R
 import com.showcase.movies.Movie
 import com.squareup.picasso.Picasso
 
-class MoviesAdapter : Adapter<MoviesAdapter.ViewHolder>() {
+class MoviesAdapter(val onClick: (Movie) -> Unit) : Adapter<MoviesAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView by lazy { view.findViewById(R.id.image) }
         val title: TextView by lazy { view.findViewById(R.id.title) }
@@ -27,6 +27,9 @@ class MoviesAdapter : Adapter<MoviesAdapter.ViewHolder>() {
         val item = items.getOrNull(position) ?: return
         holder.title.text = item.title
         Picasso.get().load(item.image).into(holder.image)
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
